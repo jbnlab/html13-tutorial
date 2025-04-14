@@ -46,10 +46,10 @@
 
 window.addEventListener("load", function() {
    // Retrieve the field/value pairs from the URL
-   var formData = location.search.slice(1);
+   let formData = location.search.slice(1);
    formData = formData.replace(/\+/g," ");
    formData = decodeURIComponent(formData);
-   var formFields = formData.split(/[&=]/g);
+   const formFields = formData.split(/[&=]/g);
 
    // Write the field values to the order form
    document.forms.order.elements.orderDate.value = formFields[1];
@@ -82,8 +82,8 @@ function runSubmit() {
 }
 
 function validateCVC() {
-   var cardCVC = document.getElementById("cvc");
-   var creditCard = document.querySelector('input[name="credit"]:checked').value;
+   const cardCVC = document.getElementById("cvc");
+   const creditCard = document.querySelector('input[name="credit"]:checked').value;
 
    if (cardCVC.validity.valueMissing) {
       cardCVC.setCustomValidity("Enter your CVC number");
@@ -97,7 +97,7 @@ function validateCVC() {
 }
 
 function validateMonth() {
-   var cardMonth = document.getElementById("expMonth");
+   const cardMonth = document.getElementById("expMonth");
    if (cardMonth.selectedIndex === 0) {
       cardMonth.setCustomValidity("Select the expiration month");
    } else {
@@ -106,7 +106,7 @@ function validateMonth() {
 }
 
 function validateYear() {
-   var cardYear = document.getElementById("expYear");
+   const cardYear = document.getElementById("expYear");
    if (cardYear.selectedIndex === 0) {
       cardYear.setCustomValidity("Select the expiration year");
    } else {
@@ -115,7 +115,7 @@ function validateYear() {
 }
 
 function validateNumber() {
-   var cardNumber = document.getElementById("cardNumber");
+   const cardNumber = document.getElementById("cardNumber");
    if (cardNumber.validity.valueMissing) {
       cardNumber.setCustomValidity("Enter your card number");
    } else if (cardNumber.validity.patternMismatch) {
@@ -128,7 +128,7 @@ function validateNumber() {
 }
 
 function validateCredit() {
-   var creditCard = document.forms.payment.elements.credit[0];
+   const creditCard = document.forms.payment.elements.credit[0];
    if (creditCard.validity.valueMissing) {
       creditCard.setCustomValidity("Select your credit card");
    } else {
@@ -137,7 +137,7 @@ function validateCredit() {
 }
 
 function validateName() {
-   var cardName = document.getElementById("cardName");
+   const cardName = document.getElementById("cardName");
    if (cardName.validity.valueMissing) {
       cardName.setCustomValidity("Enter your name as it appears on the card");
    } else {
@@ -146,23 +146,23 @@ function validateName() {
 }
 
 function sumDigits(numStr) {
-   var digitTotal = 0;
-   for (var i = 0; i < numStr.length; i++) {
+   let digitTotal = 0;
+   for (let i = 0; i < numStr.length; i++) {
       digitTotal += parseInt(numStr.charAt(i));
    }
    return digitTotal;
 }
 
 function luhn(idNum) {
-   var string1 = "";
-   var string2 = "";
+   let string1 = "";
+   let string2 = "";
 
    // Retrieve the odd-numbered digits
-   for (var i = idNum.length - 1; i >= 0; i -= 2) {
+   for (let i = idNum.length - 1; i >= 0; i -= 2) {
       string1 += idNum.charAt(i);
    }
    // Retrieve the even-numbered digits and double them
-   for (var i = idNum.length - 2; i >= 0; i -= 2) {
+   for (let i = idNum.length - 2; i >= 0; i -= 2) {
       string2 += 2*idNum.charAt(i);
    }
 
